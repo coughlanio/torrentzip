@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "crc-32": "^1.2.2",
+    "fdir": "^5.2.0",
     "pako": "^2.0.4"
   },
   "devDependencies": {

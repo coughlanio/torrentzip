@@ -32,7 +32,7 @@ class FileHeader {
     buf.writeUint16LE(this.compressionMethod, 8);
     buf.writeUint16LE(this.lastModifiedFileTime, 10);
     buf.writeUint16LE(this.lastModifiedFileDate, 12);
-    buf.writeUint32LE(this.crc32, 14);
+    buf.writeUInt32LE(this.crc32, 14);
     buf.writeUint32LE(this.compressedSize, 18);
     buf.writeUint32LE(this.uncompressedSize, 22);
     buf.writeUint16LE(this.filenameLength, 26);

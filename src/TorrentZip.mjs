@@ -1,13 +1,15 @@
 import crc from "crc-32";
 import { readFileSync } from "fs";
 import pako from "pako";
+import { join } from "path";
 import { CentralDirectoryFileHeader, EOCDRecord } from "./CentralDirectory.mjs";
 import FileHeader from "./FileHeader.mjs";
 
 class TorrentZip {
-  constructor() {
+  constructor(path) {
     this.files = [];
     this.cd = [];
+    this.path = path;
   }
 
   getLastOffset() {
@@ -18,23 +20,23 @@ class TorrentZip {
   }
 
   addFile(filename) {
-    const source = readFileSync(filename);
+    const source = readFileSync(join(this.path, filename));
     const gzip = pako.deflateRaw(source, { level: 9 });
 
-    const crc32 = crc.buf(source);
+    const crc32 = crc.buf(source, 0);
 
     const compressedSize = Buffer.byteLength(gzip);
     const uncompressedSize = Buffer.byteLength(source);
 
     const header = new FileHeader(
-      crc32,
+      crc32.toString() >>> 0,
       compressedSize,
       uncompressedSize,
       filename
     ).getBytes();
 
     const cdFileHeader = new CentralDirectoryFileHeader(
-      crc32,
+      crc32.toString() >>> 0,
       compressedSize,
       uncompressedSize,
       this.getLastOffset(),

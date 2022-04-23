@@ -1,8 +1,8 @@
 {
   "name": "torrentzipjs",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "uint.js",
+  "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write ."

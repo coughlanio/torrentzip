@@ -1,3 +1,3 @@
-# torrentzipjs
+# torrentzip
 
-TODO
+WIP

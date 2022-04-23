@@ -131,6 +131,7 @@ dist
 
 # NES ROMs
 *.nes
+*.zip
 
 # System Files
 .DS_Store
